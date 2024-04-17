@@ -37,11 +37,33 @@ function addBookToLibrary() {
     bookAuthor.textContent = `${book.author}`;
     const read = document.createElement("button");
     read.classList.add("read");
-    read.textContent = `read`;
+    read.textContent = `unread`;
+    read.addEventListener("click", function () {
+      if (read.classList.contains("read")) {
+        read.textContent = "unread";
+        read.style.backgroundColor = "#ff0037"; // Set style for unread button
+        read.classList.remove("read");
+        read.classList.add("unread");
+      } else {
+        read.textContent = "read";
+        read.style.backgroundColor = "#04a504"; // Set style for read button
+        read.classList.remove("unread");
+        read.classList.add("read");
+      }
+    });
+
     const remove = document.createElement("button");
     remove.classList.add("remove");
     remove.textContent = `remove`;
-    bookTile.append(bookTitle,bookAuthor,read,remove)
+    remove.addEventListener("click", function () {
+      const index = myLibrary.indexOf(book);
+      if (index !== -1) {
+        myLibrary.splice(index, 1);
+      }
+      bookList.removeChild(bookTile);
+    });
+
+    bookTile.append(bookTitle, bookAuthor, read, remove);
     bookList.appendChild(bookTile);
     // bookItem.textContent = `Book: ${books.title} Author: ${books.author}`;
   });
