@@ -9,13 +9,24 @@
   </head>
   <body>
     <div class="container">
-      <div><h1>Library App</h1></div>
-      <form id="bookForm">
-        <input type="text" id="title" placeholder="Title" required />
-        <input type="text" id="author" placeholder="Author" required />
-        <button id="add" type="submit">Add Book</button>
-      </form>
-      <div id="book-list"></div>
+      <div class="header"><p>Library App</p></div>
+      <div class="main-content">
+        <div class="form">
+          <form id="bookForm">
+            <input type="text" id="title" placeholder="Title" required />
+            <input type="text" id="author" placeholder="Author" required />
+            <button id="add" type="submit">Add Book</button>
+          </form>
+        </div>
+        <div id="book-list"></div>
+        <!-- <div class="bookItem">
+          <div class="bookTitle">The</div>
+          <div class="bookAuthor"></div>
+          <button class="read">Read</button>
+          <button class="remove">Remove</button>
+        </div> -->
+      </div>
+      <div class="footer">webpage by Abel A.</div>
     </div>
   </body>
 </html>
