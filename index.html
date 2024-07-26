@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Library</title>
-    <script src="/script.js" defer></script>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="header"><p>Library App</p></div>
-      <div class="main-content">
-        <div class="form">
-          <form id="bookForm">
-            <input type="text" id="title" placeholder="Title" required />
-            <input type="text" id="author" placeholder="Author" required />
-            <button id="add" type="submit">Add Book</button>
-          </form>
-        </div>
-        <div id="book-list"></div>
-        <!-- <div class="bookItem">
-          <div class="bookTitle">The</div>
-          <div class="bookAuthor"></div>
-          <button class="read">Read</button>
-          <button class="remove">Remove</button>
-        </div> -->
-      </div>
-      <div class="footer">webpage by Abel A.</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library</title>
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <p>Library App</p>
     </div>
-  </body>
+    <div class="main-content">
+      <div class="form">
+        <form id="bookForm">
+          <input type="text" id="title" placeholder="Title" required />
+          <input type="text" id="author" placeholder="Author" required />
+          <div class="checkbox">
+            <input type="checkbox" id="readStatus" />
+            <label for="readStatus">Read</label>
+          </div>
+          <button id="add" type="submit">Add Book</button>
+        </form>
+      </div>
+      <div id="book-list"></div>
+    </div>
+    <footer class="footer">
+      <p>Copyright © 2024 Abel A.</p>
+      <a href="https://github.com/abelaleb" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+    </footer>
+  </div>
+</body>
 </html>

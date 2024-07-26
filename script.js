@@ -2,19 +2,21 @@ const myLibrary = [];
 let currentBook;
 let title, author;
 
-function book(title, author) {
-  // the constructor...
+function book(title, author, readStatus = false) {
   this.title = title;
   this.author = author;
+  this.readStatus = readStatus;
 }
+
 const form = document.getElementById("bookForm");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   const bookTitle = document.getElementById("title").value;
   const bookAuthor = document.getElementById("author").value;
+  const bookReadStatus = document.getElementById("readStatus").checked;
 
   if (bookTitle.trim() !== "" && bookAuthor.trim() !== "") {
-    const books = new book(bookTitle, bookAuthor);
+    const books = new book(bookTitle, bookAuthor, bookReadStatus);
     myLibrary.push(books);
     addBookToLibrary();
     form.reset();
@@ -29,27 +31,25 @@ function addBookToLibrary() {
   myLibrary.forEach((book) => {
     const bookTile = document.createElement("div");
     bookTile.classList.add("bookItem");
+
     const bookTitle = document.createElement("div");
     bookTitle.classList.add("bookTitle");
     bookTitle.textContent = `"${book.title}"`;
+
     const bookAuthor = document.createElement("div");
     bookAuthor.classList.add("bookAuthor");
     bookAuthor.textContent = `${book.author}`;
+
     const read = document.createElement("button");
-    read.classList.add("read");
-    read.textContent = `unread`;
+    read.classList.add(book.readStatus ? "read" : "unread");
+    read.textContent = book.readStatus ? "read" : "unread";
+    read.style.backgroundColor = book.readStatus ? "#04a504" : "#ff0037";
     read.addEventListener("click", function () {
-      if (read.classList.contains("read")) {
-        read.textContent = "unread";
-        read.style.backgroundColor = "#ff0037"; // Set style for unread button
-        read.classList.remove("read");
-        read.classList.add("unread");
-      } else {
-        read.textContent = "read";
-        read.style.backgroundColor = "#04a504"; // Set style for read button
-        read.classList.remove("unread");
-        read.classList.add("read");
-      }
+      book.readStatus = !book.readStatus;
+      read.textContent = book.readStatus ? "read" : "unread";
+      read.style.backgroundColor = book.readStatus ? "#04a504" : "#ff0037";
+      read.classList.toggle("read");
+      read.classList.toggle("unread");
     });
 
     const remove = document.createElement("button");
@@ -65,6 +65,5 @@ function addBookToLibrary() {
 
     bookTile.append(bookTitle, bookAuthor, read, remove);
     bookList.appendChild(bookTile);
-    // bookItem.textContent = `Book: ${books.title} Author: ${books.author}`;
   });
 }
